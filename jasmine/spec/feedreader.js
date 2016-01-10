@@ -22,7 +22,7 @@ $(function() {
          * page?
          */
         it('are defined', function() {
-            expect(allFeeds).toBeDefined();
+            expect(allFeeds).toBeDefined;
             expect(allFeeds.length).not.toBe(0);
         });
 
@@ -32,11 +32,26 @@ $(function() {
          * and that the URL is not empty.
          */
 
+         it('URL defined', function() {
+            allFeeds.forEach(function(feed) {
+            expect(feed.url).toBeDefined();
+            expect(feed.url).not.toBeNull();
+            });
+         });
+
 
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
+
+         it('name defined', function() {
+            allFeeds.forEach(function(feed) {
+            expect(feed.name).toBeDefined();
+            expect(feed.name).not.toBeNull();
+            });
+
+         })
     });
 
 
@@ -53,6 +68,19 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+
+    describe('The menu', function() {
+
+        it('hidden by default', function() {
+            expect($('body').hasClass('menu-hidden')).toEqual(true);
+        });
+
+        it('displayed when clicked', function() {
+            $('.menu-icon-link').click();
+            expect($('body').hasClass('menu-hidden')).toEqual(false);
+        });
+
+    });
 
     /* TODO: Write a new test suite named "Initial Entries" */
 
