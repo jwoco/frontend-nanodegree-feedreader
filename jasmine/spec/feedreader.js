@@ -82,6 +82,8 @@ $(function() {
 
     });
 
+
+
     /* TODO: Write a new test suite named "Initial Entries" */
 
         /* TODO: Write a test that ensures when the loadFeed
@@ -91,10 +93,41 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
+    describe('Initial Entries', function() {
+
+        beforeEach(function(done) {
+            loadFeed(0,done);
+            });
+
+        it('should be able to get an entry', function(done) {
+            var entry = $('.feed .entry')
+            expect(entry.length).toBeGreaterThan(0);
+             done();
+        });
+
+    });
+
     /* TODO: Write a new test suite named "New Feed Selection"
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+
+    describe('New Feed Selection', function() {
+
+        var currentTitle = $('.header-title').html();
+
+        beforeEach(function(done) {
+           loadFeed(1,done); //test feed 2
+        });
+
+        afterEach(function(done) {
+           loadFeed(0, done); //test feed 1
+       });
+
+        it('new feed is loaded and content changes', function() {
+       expect($('.header-title').html()).not.toBe(currentTitle);//check content
+        });
+    });
 }());
