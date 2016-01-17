@@ -116,8 +116,8 @@ $(function() {
 
     describe('New Feed Selection', function() {
 
-         var feed1,
-             feed0;
+         var feed1;
+             //feed0;
 
          beforeEach(function(done) { //test feed 2
             loadFeed(1, function() {
@@ -129,7 +129,7 @@ $(function() {
 
          it('new feed is loaded and content changes', function(done) {
             loadFeed(0, function() {
-                expect($('.feed').html()).not.toEqual(feed0); //check content
+                expect($('.feed').html()).not.toEqual(feed1); //check content
                 done();
             });
          });
